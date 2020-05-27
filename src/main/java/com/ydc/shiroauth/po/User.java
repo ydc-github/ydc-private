@@ -1,4 +1,4 @@
-package com.example.demo.po;
+package com.ydc.shiroauth.po;
 
 import java.util.List;
 

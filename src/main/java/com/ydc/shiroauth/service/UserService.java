@@ -1,13 +1,13 @@
-package com.example.demo.service;
+package com.ydc.shiroauth.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.po.Permission;
-import com.example.demo.po.Role;
-import com.example.demo.po.User;
+import com.ydc.shiroauth.po.Permission;
+import com.ydc.shiroauth.po.Role;
+import com.ydc.shiroauth.po.User;
 
 import lombok.extern.slf4j.Slf4j;
 

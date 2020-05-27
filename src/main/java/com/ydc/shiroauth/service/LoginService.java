@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.ydc.shiroauth.service;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;

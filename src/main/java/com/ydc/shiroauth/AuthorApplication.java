@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.ydc.shiroauth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

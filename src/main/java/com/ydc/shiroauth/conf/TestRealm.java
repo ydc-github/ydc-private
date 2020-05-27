@@ -1,4 +1,4 @@
-package com.example.demo.conf;
+package com.ydc.shiroauth.conf;
 
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -10,10 +10,10 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example.demo.po.Permission;
-import com.example.demo.po.Role;
-import com.example.demo.po.User;
-import com.example.demo.service.UserService;
+import com.ydc.shiroauth.po.Permission;
+import com.ydc.shiroauth.po.Role;
+import com.ydc.shiroauth.po.User;
+import com.ydc.shiroauth.service.UserService;
 
 public class TestRealm extends AuthorizingRealm {
 

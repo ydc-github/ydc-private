@@ -1,4 +1,4 @@
-package com.example.demo.po;
+package com.ydc.shiroauth.po;
 
 public class Permission {
   private String id;

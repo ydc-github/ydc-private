@@ -1,4 +1,4 @@
-package com.example.demo.conf;
+package com.ydc.shiroauth.conf;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
