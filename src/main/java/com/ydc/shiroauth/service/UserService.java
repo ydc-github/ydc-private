@@ -25,6 +25,7 @@ public class UserService {
     List<Role> roles = new ArrayList<>();
     Role r = new Role();
     r.setName("用戶管理");
+    r.setCode("sys");
     List<Permission> permissions = new ArrayList<>();
     Permission p = new Permission();
     p.setCode("add");

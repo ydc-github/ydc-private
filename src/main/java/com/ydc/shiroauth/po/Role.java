@@ -5,6 +5,7 @@ import java.util.List;
 public class Role {
   private String id;
   private String name;
+  private String code;
   private List<Permission> permissions;
 
   public String getId() {
@@ -21,6 +22,14 @@ public class Role {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getCode() {
+    return code;
+  }
+
+  public void setCode(String code) {
+    this.code = code;
   }
 
   public List<Permission> getPermissions() {

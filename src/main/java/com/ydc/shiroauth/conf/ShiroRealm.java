@@ -6,6 +6,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ShiroRealm extends AuthorizingRealm {
   private UserService us;
 
   /*
-   * 权限校验
+   * 授权
    */
   // Authorization授权，将数据库中的角色和权限授权给输入的用户名
   @Override
@@ -34,7 +35,7 @@ public class ShiroRealm extends AuthorizingRealm {
     SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();// 权限信息
     for (Role r : user.getRoles()) {
       // 将所有的角色信息添加进来。
-      simpleAuthorizationInfo.addRole(r.getName());
+      simpleAuthorizationInfo.addRole(r.getCode());
       for (Permission p : r.getPermissions()) {
         // 将此次遍历到的角色的所有权限拿到，添加·进来
         simpleAuthorizationInfo.addStringPermission(p.getCode());
@@ -44,12 +45,15 @@ public class ShiroRealm extends AuthorizingRealm {
   }
 
   /*
-   * 登录校验
+   * 认证
    */
   @Override
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) {
-    String userName = authenticationToken.getPrincipal().toString();
-    User user = us.get(userName);
+    Object userName = authenticationToken.getPrincipal();
+    if (userName == null) {
+      throw new UnauthorizedException();
+    }
+    User user = us.get((String) userName);
     if (user == null) {
       throw new UnknownAccountException();
     }

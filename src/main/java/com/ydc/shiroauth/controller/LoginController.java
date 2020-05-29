@@ -2,6 +2,7 @@ package com.ydc.shiroauth.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ydc.shiroauth.service.LoginService;
@@ -13,7 +14,8 @@ public class LoginController {
   private LoginService service;
 
   @GetMapping("login")
-  public String login(String name, String password) {
+  public String login(@RequestParam("name") String name,
+      @RequestParam("password") String password) {
     service.login(name, password);
     return "ok";
   }

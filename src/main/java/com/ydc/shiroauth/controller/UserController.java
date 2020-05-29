@@ -20,7 +20,7 @@ public class UserController {
   private UserService service;
 
   @GetMapping("add")
-  @RequiresPermissions("add")
+  @RequiresPermissions("user:add")
   public void add() {
     log.debug("user add controller");
     User u = new User();
