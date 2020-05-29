@@ -65,7 +65,7 @@ public class ShiroConfig {
 
   @Bean(name = "securityManager")
   public DefaultWebSecurityManager getDefaultWebSecurityManager(
-      @Qualifier("userRealm") TestRealm userRealm,
+      @Qualifier("userRealm") ShiroRealm userRealm,
       @Qualifier("cacheManager") CacheManager cacheManager) {
     DefaultWebSecurityManager defaultWebSecurityManager = new DefaultWebSecurityManager();
     // 关联Realm
@@ -80,8 +80,8 @@ public class ShiroConfig {
   }
 
   @Bean(name = "userRealm")
-  TestRealm testRealm() {
-    return new TestRealm();
+  ShiroRealm testRealm() {
+    return new ShiroRealm();
   }
 
 }

@@ -15,7 +15,7 @@ import com.ydc.shiroauth.po.Role;
 import com.ydc.shiroauth.po.User;
 import com.ydc.shiroauth.service.UserService;
 
-public class TestRealm extends AuthorizingRealm {
+public class ShiroRealm extends AuthorizingRealm {
 
   @Autowired
   private UserService us;
