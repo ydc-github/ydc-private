@@ -11,6 +11,9 @@ import com.ydc.shiroauth.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+import java.util.Random;
+
 @Slf4j
 @RestController
 @RequestMapping("user")
@@ -22,10 +25,20 @@ public class UserController {
   @GetMapping("add")
   @RequiresPermissions("user:add")
   public void add() {
-    log.debug("user add controller");
+    int r = new Random().nextInt(100);
     User u = new User();
-    u.setName("test");
+    u.setAccount("test"+r);
+    u.setPassword("123456");
+    u.setName("test"+r);
+    u.setSex(1);
     service.add(u);
+  }
+
+  @GetMapping("addRoles")
+  @RequiresPermissions("add")
+  public String addRoles(String userId,String[] roleIds){
+    service.userSetRoles(userId, Arrays.asList(roleIds));
+    return "ok";
   }
 
   @GetMapping("get")

@@ -3,6 +3,9 @@ package com.ydc.shiroauth.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ydc.shiroauth.dao.RoleMapper;
+import com.ydc.shiroauth.dao.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ydc.shiroauth.po.Permission;
@@ -10,34 +13,31 @@ import com.ydc.shiroauth.po.Role;
 import com.ydc.shiroauth.po.User;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 @Slf4j
 @Service
 public class UserService {
+  @Resource
+  private UserMapper userMapper;
+  @Resource
+  private RoleMapper roleMapper;
 
-  public User get(String loginAccount) {
-    // 暂时写死
-    if (!"test".equals(loginAccount)) {
-      return null;
-    }
-    User u = new User();
-    u.setPassword("123");
-    List<Role> roles = new ArrayList<>();
-    Role r = new Role();
-    r.setName("用戶管理");
-    r.setCode("sys");
-    List<Permission> permissions = new ArrayList<>();
-    Permission p = new Permission();
-    p.setCode("add");
-    permissions.add(p);
-    r.setPermissions(permissions);
-    roles.add(r);
-    u.setRoles(roles);
-    return u;
+  public User getByAccount(String loginAccount) {
+    return userMapper.getByAccount(loginAccount);
   }
 
   public void add(User u) {
     log.debug("add user:u={}", u.getName());
+    userMapper.insert(u);
   }
 
+  @Transactional
+  public void userSetRoles(String userId, List<String> roleIds){
+    for(String role:roleIds){
+      roleMapper.insertUserRole(role,userId);
+    }
+  }
 }

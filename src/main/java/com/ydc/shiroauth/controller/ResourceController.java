@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("menu")
-public class ResouseController {
+public class ResourceController {
 
   @GetMapping("add")
   @RequiresPermissions("menu:add")
