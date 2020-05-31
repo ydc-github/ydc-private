@@ -20,11 +20,10 @@ public class RoleController {
     @GetMapping("add")
     @RequiresPermissions("add")
     public String add(String code,String name){
-        String userId="971461d2-a344-11ea-889c-34298f99a1af";
         Role r = new Role();
         r.setName(name);
         r.setCode(code);
-        service.add(userId,r);
+        service.add(r);
         return "ok";
     }
 

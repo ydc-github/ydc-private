@@ -16,7 +16,7 @@ public class RoleService {
     private RoleMapper mapper;
 
     @Transactional
-    public void add(String userId, Role role){
+    public void add(Role role){
         mapper.insert(role);
     }
 }
