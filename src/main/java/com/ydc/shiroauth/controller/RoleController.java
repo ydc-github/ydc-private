@@ -27,4 +27,11 @@ public class RoleController {
         return "ok";
     }
 
+    @GetMapping("addPermission")
+    @RequiresPermissions("add")
+    public String addPermission(String roleId,String[] permissionIds){
+
+        return "ok";
+    }
+
 }

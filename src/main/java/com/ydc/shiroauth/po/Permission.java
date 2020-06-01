@@ -3,6 +3,15 @@ package com.ydc.shiroauth.po;
 public class Permission {
   private String id;
   private String code;
+  private  String name;
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
 
   public String getId() {
     return id;

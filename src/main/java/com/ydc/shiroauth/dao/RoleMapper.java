@@ -16,9 +16,9 @@ import com.ydc.shiroauth.po.Role;
 
 @Mapper
 public interface RoleMapper {
-    @Select("SELECT r.* FROM role LEFT JOIN user_role ur ON r.id=ur.role_id"
-            + "WHERE ur.user_id=#{userId}")
-    @Results({@Result(column = "role_id", property = "permissions",
+    @Select("SELECT r.* FROM role r LEFT JOIN user_role ur ON r.id=ur.role_id"
+            + " WHERE ur.user_id=#{userId}")
+    @Results({@Result(column = "id", property = "permissions",
             many = @Many(select = "com.ydc.shiroauth.dao.PermissionMapper.getByRole",
                     fetchType = FetchType.LAZY))})
     List<Role> getByUser(String userId);
