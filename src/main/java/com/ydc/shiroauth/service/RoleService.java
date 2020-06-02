@@ -1,14 +1,12 @@
 package com.ydc.shiroauth.service;
 
-import com.ydc.shiroauth.dao.RoleMapper;
-import com.ydc.shiroauth.po.Role;
-import com.ydc.shiroauth.po.User;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-import java.beans.Transient;
-import java.util.List;
+import com.ydc.shiroauth.dao.RoleMapper;
+import com.ydc.shiroauth.po.Role;
 
 @Service
 public class RoleService {
@@ -16,7 +14,7 @@ public class RoleService {
     private RoleMapper mapper;
 
     @Transactional
-    public void add(Role role){
+    public void add(Role role) {
         mapper.insert(role);
     }
 
